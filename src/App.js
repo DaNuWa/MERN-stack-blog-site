@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import Navbar  from './components/Navbar';
+import Hero  from './components/Hero';
+import Product  from './components/Products';
+import Sidebar from './components/sidebar/Sidebar'
+import PostList from './components/Postlist/PostList'
+import Fullpost from './components/Postlist/Fullpost'
+import Footer from './components/Footer'
+import {
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Error from './components/Error/Error'
+import Admin from './components/Admin/Dashboard'
+import {ContextConsumer}  from './Content/Content'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  render()
+  {
+  return(<>
+ 
+  <Error/>
+   <Navbar/>
+   <Switch>
+     <Route path="/admin" exact>
+      <Admin/>
+     </Route>
+     <Route path="/posts" exact>
+        <PostList/>
+      </Route>
+      <Route path="/posts/:id" exact>
+        <Fullpost/>
+      </Route>
+  </Switch>
+
+    </>);
+  }
+  
 }
 
+{/*<div className="App">
+      <ContextConsumer>
+        {
+          value=>
+          {
+            console.log(value);
+          }
+        }
+      </ContextConsumer>*/}
 export default App;
