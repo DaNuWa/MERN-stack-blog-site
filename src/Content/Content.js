@@ -12,7 +12,15 @@ class Content extends React.Component {
                  ]
                 }
             }
-            
+         //Getting data from backend
+         getData=()=>
+         {
+             
+         }   
+
+         componentDidMount() {
+            this.getData();
+          }
     createPost=()=>
         {
             let tempdata=[...this.state.datas,{id:uuid(),title:"Title",description:"lorem ipsun dolor sit aner",created_at:'2020-01-25',owner:"yohan"}];
